@@ -41,9 +41,12 @@ ul.groupview, ul.groupview ul {
 .navbar-nav.navbar-right:last-child {
   margin-right: 50px;
 }
+.dropdown-menu>li.categories{
+  width: 25px;
+}
 .dropdown-menu>li.categories>a{
-  display: inline;
+  clear: none;
 }
 .dropdown-menu>li.categories .pull-left{
-  margin-left: 15px;
+  margin: 0 15px;
 }
