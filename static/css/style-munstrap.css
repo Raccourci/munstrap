@@ -30,11 +30,11 @@ img#zoom_image{
 ul.groupview, ul.groupview ul {
 	list-style-type: none;
 }
-.munin-icon {
+.navbar-brand.logo {
    background: url(../img/logo-munin.png) left top;
    margin: -6px 6px 0 0;
-   width: 32px;
-   height: 30px;
+   width: 115px;
+   height: 20px;
    display: block;
    float: left;
 }
