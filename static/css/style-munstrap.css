@@ -42,7 +42,7 @@ ul.groupview, ul.groupview ul {
   margin-right: 50px;
 }
 .dropdown-menu>li.categories{
-  width: 25px;
+  width: 280px;
 }
 .dropdown-menu>li.categories>a{
   clear: none;
