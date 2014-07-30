@@ -32,14 +32,14 @@ ul.groupview, ul.groupview ul {
 }
 .navbar-brand .logo {
    background: url(../img/logo-munin.png) left top;
-   margin: -6px 6px 0 0;
+   margin: 0 0 0 50px;
    width: 115px;
    height: 20px;
    display: block;
    float: left;
 }
 .navbar-nav.navbar-right:last-child {
-  margin-right: 0;
+  margin-right: 50px;
 }
 .dropdown-menu>li.categories>a{
   display: inline;
