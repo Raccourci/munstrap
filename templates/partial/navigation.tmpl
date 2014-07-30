@@ -13,9 +13,6 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-            <li>
-                <TMPL_IF NAME="R_PATH"><a href="<TMPL_VAR NAME="R_PATH">"></TMPL_IF><i class="fa fa-home"></i> Overview<TMPL_IF NAME="R_PATH"></a></TMPL_IF>
-            </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-sitemap"></i> Groups<b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -38,13 +35,14 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tachometer"></i> Categories<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <TMPL_LOOP NAME="GLOBALCATS">
-                    <li><a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLDAY">"><span class="cap"><TMPL_VAR NAME="NAME"></cap></a>
-                    <span class="pull-right">
-                    <a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLDAY">" class="label label-info" title="Day">D</a>
-                    <a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLWEEK">" class="label label-primary" title="Week">W</a>
-                    <a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLMONTH">" class="label label-warning" title="Month">M</a>
-                    <a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLYEAR">" class="label label-danger" title="Year">Y</a>
-                    </span>
+                    <li class="categories">
+                        <a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLDAY">"><span class="cap"><TMPL_VAR NAME="NAME"></cap></a>
+                        <span class="pull-right">
+                            <a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLDAY">" class="label label-info" title="Day">D</a>
+                            <a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLWEEK">" class="label label-primary" title="Week">W</a>
+                            <a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLMONTH">" class="label label-warning" title="Month">M</a>
+                            <a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLYEAR">" class="label label-danger" title="Year">Y</a>
+                        </span>
                     </TMPL_LOOP>
                 </ul>
             </li>
