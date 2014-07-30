@@ -38,11 +38,12 @@ ul.groupview, ul.groupview ul {
    display: block;
    float: left;
 }
-
 .navbar-nav.navbar-right:last-child {
   margin-right: 0;
 }
-
-li.categories {
-  width: 250px;
+.dropdown-menu>li.categories>a{
+  display: inline;
+}
+.dropdown-menu>li.categories .pull-left{
+  margin-left: 15px;
 }

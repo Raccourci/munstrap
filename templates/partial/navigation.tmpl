@@ -36,13 +36,13 @@
                 <ul class="dropdown-menu">
                     <TMPL_LOOP NAME="GLOBALCATS">
                     <li class="categories">
-                        <a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLDAY">"><span class="cap"><TMPL_VAR NAME="NAME"></cap></a>
-                        <span class="pull-right">
+                        <span class="pull-left">
                             <a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLDAY">" class="label label-info" title="Day">D</a>
                             <a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLWEEK">" class="label label-primary" title="Week">W</a>
                             <a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLMONTH">" class="label label-warning" title="Month">M</a>
                             <a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLYEAR">" class="label label-danger" title="Year">Y</a>
                         </span>
+                        <a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URLDAY">"><span class="cap"><TMPL_VAR NAME="NAME"></cap></a>
                     </TMPL_LOOP>
                 </ul>
             </li>
