@@ -23,10 +23,14 @@
             </li>
 
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-sitemap"></i> Nodes<b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-sitemap"></i> Hosts<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <TMPL_LOOP NAME="ROOTGROUPS">
-                        <li><a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URL">"><TMPL_VAR NAME="NAME"></a></li>
+                        <TMPL_LOOP NAME="GROUPS">
+                            <TMPL_IF NAME="NCATEGORIES">
+                                <li><a href="<TMPL_VAR NAME="R_PATH">/<TMPL_VAR NAME="URL">"><TMPL_VAR ESCAPE="HTML" NAME="NAME"></a></li>
+                            </TMPL_IF>
+                        </TMPL_LOOP>
                     </TMPL_LOOP>
                 </ul>
             </li>
