@@ -20,7 +20,7 @@ img#zoom_image{
 }
 
 .link-domain {
-	font-size: 1.4em;	
+	font-size: 1.4em;
 	color: #660066;
 }
 .link-host {
@@ -31,10 +31,10 @@ ul.groupview, ul.groupview ul {
 	list-style-type: none;
 }
 .munin-icon {
-   background: url(../img/logo-munin.png) left top; 
-   margin-top: -6px;
-   width: 35px; 
-   height: 35px;
+   background: url(../img/logo-munin.png) left top;
+   margin: -6px 6px 0 0;
+   width: 32px;
+   height: 30px;
    display: block;
    float: left;
 }
