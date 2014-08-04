@@ -211,6 +211,8 @@
         var hover = document.getElementById("zoom_hover");
         var overlay = document.getElementById("overlay");
 
+        $('#overlay').height($('#zoom_image').height());
+
         form.onsubmit = function(){//Submit catching
           var qs = new Querystring(query);
           var src = "cgiurl_graph=" + qs.get("cgiurl_graph", "/munin-cgi/munin-cgi-graph")
