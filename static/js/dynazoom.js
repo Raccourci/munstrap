@@ -53,7 +53,6 @@ function refreshZoom(query, form, image, hover, overlay) {
     clickCounter = 0;
     initial_left = 0;
     initial_top = 0;
-    overlay.style.width = 0;
 
     hover.onmousemove = undefined;
     form.start_iso8601.disabled = false;
@@ -73,6 +72,9 @@ function refreshZoom(query, form, image, hover, overlay) {
       + "&size_x=" + form.size_x.value
       + "&size_y=" + form.size_y.value
     ;
+
+    // Hide overlay on refresh
+    overlay.style.width = 0;
 
     return ((+form.stop_epoch.value) - (+form.start_epoch.value)) / (+form.size_x.value);
   }
