@@ -208,6 +208,8 @@
         var query = $(this).attr('data-href');
         var form = document.getElementById("zoom_form");
         var image = document.getElementById("zoom_image");
+        var hover = document.getElementById("zoom_hover");
+        var overlay = document.getElementById("overlay");
 
         form.onsubmit = function(){//Submit catching
           var qs = new Querystring(query);
@@ -222,11 +224,11 @@
             + "&size_x=" + form.size_x.value
             + "&size_y=" + form.size_y.value
           ;
-          refreshZoom(src, form, image);
+          refreshZoom(src, form, image, hover, overlay);
           return false;
         };
 
-        refreshZoom(query, form, image);
+        refreshZoom(query, form, image, hover, overlay);
         $('#zoom').modal('show');
       });
 
