@@ -50,3 +50,12 @@ ul.groupview, ul.groupview ul {
 .dropdown-menu>li.categories .pull-left{
   margin: 0 15px;
 }
+#zoom_hover{
+  position:relative;
+}
+#overlay{
+  position:absolute;
+  height:400px;
+  top:35px;
+  background:rgba(0,0,0,0.5);
+}

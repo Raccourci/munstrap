@@ -1,8 +1,8 @@
-function refreshZoom(query, form, image, divOverlay) {
+function refreshZoom(query, form, image, hover, overlay) {
   //INIT
   var qs = new Querystring(query);
   init();
-  
+
   var scale = refreshImg();
   var start_epoch = (+qs.get("rst_start_epoch", form.start_epoch.value));
   var stop_epoch = (+qs.get("rst_stop_epoch", form.stop_epoch.value));
@@ -20,9 +20,9 @@ function refreshZoom(query, form, image, divOverlay) {
   form.size_x.onblur = refreshImg;
   form.size_y.onblur = refreshImg;
   form.btnReset.onclick = reset;
-  
+
   // Sets the onClick handler
-  image.onclick = click;
+  hover.onclick = click;
   var clickCounter = 0;
 
   //FUNCTIONS
@@ -37,24 +37,24 @@ function refreshZoom(query, form, image, divOverlay) {
 
     updateStartStop();
   }
-  
+
   function reset(event){
     init();
-    
+
     //Can be not the initial ones in case of manual refresh
     form.start_epoch.value = start_epoch;
     form.stop_epoch.value = stop_epoch;
     updateStartStop();
-    
+
     //Redraw
     scale = refreshImg();
-    
+
     //Reset gui
     clickCounter = 0;
     initial_left = 0;
     initial_top = 0;
-    
-    image.onmousemove = undefined;
+
+    hover.onmousemove = undefined;
     form.start_iso8601.disabled = false;
     form.stop_iso8601.disabled = false;
     form.start_epoch.disabled = false;
@@ -63,10 +63,10 @@ function refreshZoom(query, form, image, divOverlay) {
 
   function refreshImg(event) {
     image.src = qs.get("cgiurl_graph", "/munin-cgi/munin-cgi-graph") + "/"
-      + form.plugin_name.value 
+      + form.plugin_name.value
       + "-pinpoint=" + parseInt(form.start_epoch.value) + "," + parseInt(form.stop_epoch.value)
       + ".png"
-      + "?" 
+      + "?"
       + "&lower_limit=" + form.lower_limit.value
       + "&upper_limit=" + form.upper_limit.value
       + "&size_x=" + form.size_x.value
@@ -88,18 +88,23 @@ function refreshZoom(query, form, image, divOverlay) {
     // Handling the borders (X1>X2 ou X1<X2)
     var posX = getCoordinatesOnImage(event)[0];
     var current_width = posX - initial_left;
+
     if (current_width < 0) {
       delta_x = posX - 63; // the Y Axis is 63px from the left border
       size_x = - current_width;
+      overlay.style.left = (initial_left + current_width) + "px";
+      overlay.style.width = size_x + "px";
     } else {
       delta_x = initial_left - 63; // the Y Axis is 63px from the left border
       size_x = current_width;
+      overlay.style.left = initial_left + "px";
+      overlay.style.width = size_x + "px";
     }
-    
+
     // Compute the epochs UNIX (only for horizontal)
     form.start_epoch.value = start_epoch + scale * delta_x;
     form.stop_epoch.value = start_epoch + scale * ( delta_x + size_x );
-    
+
     // update !
     updateStartStop();
   }
@@ -108,17 +113,17 @@ function refreshZoom(query, form, image, divOverlay) {
     var pos = getCoordinatesOnImage(event);
     initial_left = pos[0];
     initial_top = pos[1];
-    
+
     // Fix the handles
     form.start_iso8601.disabled = true;
     form.stop_iso8601.disabled = true;
     form.start_epoch.disabled = true;
     form.stop_epoch.disabled = true;
-    image.onmousemove = divMouseMove;
+    hover.onmousemove = divMouseMove;
   }
 
   function endZoom(event) {
-    image.onmousemove = undefined;
+    hover.onmousemove = undefined;
     form.start_iso8601.disabled = false;
     form.stop_iso8601.disabled = false;
     form.start_epoch.disabled = false;
@@ -134,9 +139,9 @@ function refreshZoom(query, form, image, divOverlay) {
 
     var start_manual = fillDate(form.start_iso8601.value, default_date);
     var stop_manual = fillDate(form.stop_iso8601.value, default_date);
-    
+
     var dateRegex = /(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}).(\d{4})/;
-    
+
     if (dateRegex.test(start_manual)) {
       var date_parsed = new Date(start_manual.replace(dateRegex, "$2 $3, $1 $4:$5:$6"));
       form.start_epoch.value = date_parsed.getTime() / 1000;
@@ -153,15 +158,15 @@ function refreshZoom(query, form, image, divOverlay) {
 
   function click(event) {
     switch ((clickCounter++) % 2) {
-      case 0: 
+      case 0:
         startZoom(event);
         break;
-      case 1: 
+      case 1:
         endZoom(event);
-        break;			
+        break;
     }
   }
-  
+
   //Coordinates on image
   function findPosition(oElement){
     if(typeof( oElement.offsetParent ) != "undefined"){
@@ -175,11 +180,12 @@ function refreshZoom(query, form, image, divOverlay) {
       return [ oElement.x, oElement.y ];
     }
   }
+
   function getCoordinatesOnImage(event){
     var posX = 0;
     var posY = 0;
     var imgPos;
-    imgPos = findPosition(image);
+    imgPos = findPosition(hover);
     if (!event) var event = window.event;
     if (event.pageX || event.pageY){
       posX = event.pageX;
