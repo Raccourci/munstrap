@@ -58,3 +58,6 @@ ul.groupview, ul.groupview ul {
   top:0;
   background:rgba(0,0,0,0.2);
 }
+#zoom .modal-lg{
+  width: 940px;
+}
