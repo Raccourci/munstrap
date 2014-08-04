@@ -56,6 +56,7 @@ ul.groupview, ul.groupview ul {
 #overlay{
   position:absolute;
   top:0;
+  height: 505px;
   background:rgba(0,0,0,0.2);
 }
 #zoom .modal-lg{

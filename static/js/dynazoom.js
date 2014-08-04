@@ -9,9 +9,6 @@ function refreshZoom(query, form, image, hover, overlay) {
   var initial_left;
   var initial_top;
 
-  // Height overlay
-  $('#overlay').height($('#zoom_image').height());
-
   //form.btnMaj.onclick = majDates;
   form.plugin_name.onblur = refreshImg;
   form.start_iso8601.onblur = majDates;
